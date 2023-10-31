@@ -39,7 +39,7 @@ with open(caminho_arquivo, 'w') as f:
     for result in results:
         insert_query = f"INSERT INTO esocial.historico (idevento, evento, status, criado_por, alterado_por, " \
                        f"message, protocolo, cnpj, nr_recibo)" \
-                       f" VALUES ('{result[1]}', '{result[2]}', '{result[3]}', '{result[4]}', '{result[5]}', '{result[8]}', '{result[9]}', '{result[10]}', '{result[11]}');"
+                       f" VALUES ({result[1]!r}, {result[2]!r}, {result[3]!r}, {result[4]!r}, {result[5]!r}, {result[8]!r}, {result[9]!r}, {result[10]!r}, '{result[11]}');"
         f.write(insert_query + '\n')
         print(insert_query)
 

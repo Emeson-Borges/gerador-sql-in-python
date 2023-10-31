@@ -34,9 +34,15 @@ results = cursor.fetchall()
 # Geração do script de insert
 with open(caminho_arquivo, 'w') as f:
     for result in results:
+        def format_value(value):
+            return f"{value}" if value is not None else 'NULL'
+        
         insert_query = f"INSERT INTO esocial.s1200 (idevento, indretif, nrrecibo, indapuracao, perapur, indguia, tpamb, procemi, verproc, tpinsc, nrinsc, cpftrab, nmtrab, dtnascto, tpinscsucessaovinc,\
         nrinscsucessaovinc, matricantsucessaovinc, dtadmsucessaovinc, observacaosucessaovinc, situacao, tipo, criado_por, alterado_por) \
-        VALUES ('{result[1]}', '{result[2]}', '{result[3]}', '{result[4]}', '{result[5]}', '{result[6]}', '{result[7]}', '{result[8]}', '{result[9]}', '{result[10]}', '{result[11]}', '{result[12]}', '{result[13]}', '{result[14]}', '{result[15]}', '{result[16]}', '{result[17]}', '{result[18]}', '{result[19]}', {result[20]}, '{result[12]}', '{result[22]}', '{result[23]}');"
+        VALUES ({result[1]!r}, {result[2]!r}, {format_value(result[3])!r}, {result[4]!r}, {result[5]!r}, {result[6]!r}, {result[7]!r}, {result[8]!r}, {result[9]!r}, {result[10]!r}, {result[11]!r}, {result[12]!r}, {result[13]!r}, {result[14]!r}, {result[15]!r}, {result[16]!r}, {result[17]!r}, {result[18]!r}, {result[19]!r}, {result[20]}, {result[12]!r}, {result[22]!r}, {result[23]});"
+        
+        # Substitua as aspas em branco (vazias) por NULL
+        insert_query = insert_query.replace("''", "NULL")
         
         f.write(insert_query + '\n')
         print(insert_query)

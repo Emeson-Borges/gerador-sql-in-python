@@ -6,6 +6,7 @@ insert_hist_S1210.sql
 insert_hist_S1200.sql
 insert_hist_S1202.sql
 insert_hist_S1207.sql
+insert_hist_S2410.sql
 
 insert_S1200.sql
 insert_S2200.sql
@@ -14,6 +15,7 @@ insert_S2230.sql
 insert_S1202.sql
 insert_S2299.sql
 insert_S1207.sql
+insert_S2410.sql
 
 # Django #
 *.log
